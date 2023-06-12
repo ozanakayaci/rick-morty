@@ -24,7 +24,7 @@ function Home() {
 
   //locationsIDs.length == 6 olana kadar 1 ile 128 arasında rastgele sayı üret ve locationsIDs arrayine ekle
   if (locationsIDs.length < 6) {
-    let randomNumber = Math.floor(Math.random() * 128) + 1;
+    let randomNumber = Math.floor(Math.random() * 126) + 1;
     if (!locationsIDs.includes(randomNumber)) {
       setLocationsIDs([...locationsIDs.sort(), randomNumber]);
     }
