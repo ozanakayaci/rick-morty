@@ -8,7 +8,7 @@ function Home() {
 
   //charactersIDs.length == 6 olana kadar 1 ile 826 arasında rastgele sayı üret ve charactersIDs arrayine ekle
   if (charactersIDs.length < 6) {
-    let randomNumber = Math.floor(Math.random() * 826) + 1;
+    let randomNumber = Math.floor(Math.random() * 823) + 3;
     if (!charactersIDs.includes(randomNumber)) {
       setCharactersIDs([...charactersIDs, randomNumber]);
     }
