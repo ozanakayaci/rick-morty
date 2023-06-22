@@ -17,7 +17,7 @@ import {
 
 function App() {
   return (
-    <div className="App mx-5">
+    <div className="App">
       <Navbar />
       <div className="pages max-w-screen-lg mx-auto">
         <Routes>
