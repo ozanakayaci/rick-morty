@@ -6,14 +6,7 @@ import Characters from "./components/pages/Characters/Characters.js";
 import Episodes from "./components/pages/Episodes/Episodes.js";
 import Locations from "./components/pages/Locations/Locations.js";
 
-import {
-  createBrowserRouter,
-  Link,
-  Route,
-  RouterProvider,
-  Routes,
-  ErrorBoundary,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
