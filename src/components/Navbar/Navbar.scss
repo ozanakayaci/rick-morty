@@ -62,3 +62,20 @@ $background-gradient:  linear-gradient(90deg, rgba(151,206,76,1) 0%, rgba(240,22
 .logo:hover {
   color: $logo-color;
 }
+
+@media screen and (max-width: 1024px) {
+  .navbar-comp {
+    width: 100%;
+  }
+  .navbar-button {
+    font-size: 1.2em;
+  }
+  .logo {
+    font-size: 2em;
+  }
+  //mobile navbar dropdown
+ 
+  
+
+}
+  

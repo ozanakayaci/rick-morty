@@ -40,3 +40,10 @@ $bg-color: #ffeeee;
 .search-container:hover {
   animation: hoverShake 0.15s linear 3;
 }
+
+@media screen and (max-width: 1024px) {
+  .search-container {
+    display: none;
+  }
+}
+  
