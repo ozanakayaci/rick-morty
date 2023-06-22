@@ -66,8 +66,27 @@ function Card(props) {
           </div> //characterCards endpoint ********************************
         ) : dataType == "episode" ? (
           //episodesCards ********************************
-          <div className="episodes">
-            <Link to={`${dataType}s/${props.id}`}>{charData.name}</Link>
+          <div className="characters relative border-2 border-indigo-50 border-b-4 border-b-purple-600 rounded-lg m-3">
+            <div
+              className=" bottom-0 h-20 left-0 pt-6 w-full text-center 
+            bg-gradient-to-t from-purple-100  via-purple-50 via-42% "
+            >
+              <Link
+                className="mt-2 mx-4  font-mono text-lg hover:italic 
+                font-extrabold text-purple-600"
+                to={`${dataType}s/${props.id}`}
+              >
+                {charData.name}
+              </Link>
+            </div>
+            <div className="flex justify-around ">
+              <span className="w-20 max-w-full truncate whitespace-nowrap text-sm font-bold text-gray-600">
+                {charData.air_date + " "}
+              </span>
+              <span className="w-20	max-w-full truncate whitespace-nowrap text-sm font-bold text-gray-600">
+                {charData.episode + " "}
+              </span>
+            </div>
           </div> //episodesCards endpoint ********************************
         ) : (
           //locationsCards ********************************
