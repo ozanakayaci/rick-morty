@@ -25,7 +25,7 @@ function Card(props) {
         {props.type == "character" ? (
           //characterCards ********************************
           <div className="characters relative border-2 border-indigo-50 border-b-4 border-b-purple-600 rounded-lg m-3">
-            <Link className="inline-block" to={`${dataType}s/${props.id}`}>
+            <Link className="inline-block" to={`/${dataType}s/${props.id}`}>
               <img
                 className="block border border-transparent rounded-lg"
                 src={charData.image}
@@ -39,7 +39,7 @@ function Card(props) {
               <Link
                 className="mt-2 mx-4 whitespace-nowrap font-mono text-lg hover:italic 
                 font-extrabold text-purple-600"
-                to={`${dataType}s/${props.id}`}
+                to={`/${dataType}s/${props.id}`}
               >
                 {charData.name}
               </Link>
