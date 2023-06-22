@@ -15,7 +15,7 @@ function Home() {
   }
 
   //episodesIDs.length == 6 olana kadar 1 ile 51 arasında rastgele sayı üret ve episodesIDs arrayine ekle
-  if (episodesIDs.length < 6) {
+  if (episodesIDs.length < 11) {
     let randomNumber = Math.floor(Math.random() * 51) + 1;
     if (!episodesIDs.includes(randomNumber)) {
       setEpisodesIDs([...episodesIDs.sort(), randomNumber]);
@@ -23,7 +23,7 @@ function Home() {
   }
 
   //locationsIDs.length == 6 olana kadar 1 ile 128 arasında rastgele sayı üret ve locationsIDs arrayine ekle
-  if (locationsIDs.length < 6) {
+  if (locationsIDs.length < 11) {
     let randomNumber = Math.floor(Math.random() * 126) + 1;
     if (!locationsIDs.includes(randomNumber)) {
       setLocationsIDs([...locationsIDs.sort(), randomNumber]);
