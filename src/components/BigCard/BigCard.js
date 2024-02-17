@@ -13,7 +13,15 @@ function BigCard(props) {
           <Card key={key} item={item} type={props.type} />
         ))}
       </div>
-      <Pagination page={props.page} setPage={props.setPage} type={props.type} />
+      {props.type !== "favorite" ? (
+        <Pagination
+          page={props.page}
+          setPage={props.setPage}
+          type={props.type}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
