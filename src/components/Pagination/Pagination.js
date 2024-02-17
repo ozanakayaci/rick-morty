@@ -62,7 +62,7 @@ function Pagination(props) {
             {pages.map((page, index) => (
               <a
                 key={index}
-                href="#character"
+                href={"#"+props.type}
                 className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
                   page === currentPage
                     ? "bg-indigo-600 text-white"

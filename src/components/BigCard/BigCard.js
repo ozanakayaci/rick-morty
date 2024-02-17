@@ -4,7 +4,7 @@ import Pagination from "../Pagination/Pagination.js";
 
 function BigCard(props) {
   return (
-    <div id="character">
+    <div id={props.type}>
       <div className="text-center font-bold text-xl">
         <span>{`${props.type[0].toUpperCase() + props.type.slice(1)}s`}</span>
       </div>
@@ -13,7 +13,7 @@ function BigCard(props) {
           <Card key={key} item={item} type={props.type} />
         ))}
       </div>
-      <Pagination page={props.page} setPage={props.setPage} />
+      <Pagination page={props.page} setPage={props.setPage} type={props.type} />
     </div>
   );
 }

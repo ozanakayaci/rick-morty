@@ -10,10 +10,10 @@ function Character() {
 
   const [characters, setCharacters] = useState([]);
   const [pageChar, setPageChar] = useState([1, 0]);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("first");
     handleGetCharacters();
   }, [pageChar[0]]);
 

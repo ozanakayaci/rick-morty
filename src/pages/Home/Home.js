@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import BigCard from "../../components/BigCard/BigCard";
 import axios from "axios";
 import Character from "../Characters/Characters";
+import Locations from "../Locations/Locations";
+import Episodes from "../Episodes/Episodes";
 
 function Home() {
   const [episodes, setEpisodes] = useState([]);
@@ -61,18 +63,9 @@ function Home() {
     <div>
       <div className="grid grid-cols-1 gap-4">
         <Character/>
-        <BigCard
-          page={pageEp}
-          setPage={setPageEp}
-          data={episodes}
-          type={"episode"}
+        <Episodes
         />
-        <BigCard
-          page={pageLoc}
-          setPage={setPageLoc}
-          data={locations}
-          type={"location"}
-        />
+        <Locations/>
       </div>
     </div>
   );
