@@ -12,7 +12,7 @@ function Pagination(props) {
 
   const generatePageNumbers = () => {
     const pageNumbers = [];
-    const pagesToShow = 7; // 3 önce + seçili sayfa + 3 sonraki
+    const pagesToShow = 7;
 
     for (
       let i = Math.max(1, currentPage - 3);
@@ -40,9 +40,9 @@ function Pagination(props) {
       <div className="sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            Showing <span className="font-medium">1</span> to{" "}
-            <span className="font-medium">10</span> of{" "}
-            <span className="font-medium">97</span> results
+            Showing <span className="font-medium">{currentPage * 20 - 19}</span>{" "}
+            to <span className="font-medium">{currentPage * 20}</span> of{" "}
+            <span className="font-medium">{maxPage * 20}</span> results
           </p>
         </div>
         <div>
@@ -50,26 +50,35 @@ function Pagination(props) {
             className="isolate inline-flex -space-x-px rounded-md shadow-sm"
             aria-label="Pagination"
           >
-            <a className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-              <span className="sr-only">Previous</span>
+            <a
+              onClick={() => {
+                props.setPage([currentPage - 1, maxPage]);
+              }}
+              className="relative inline-flex items-center cursor-pointer px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            >
+              <span className="sr-only ">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </a>
             {pages[0] > 1 && (
-              <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
+              <span
+                onClick={() => {
+                  props.setPage([1, maxPage]);
+                }}
+                className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:outline-offset-0"
+              >
                 ...
               </span>
             )}
             {pages.map((page, index) => (
               <a
                 key={index}
-                href={"#"+props.type}
-                className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
+                className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold cursor-pointer ${
                   page === currentPage
                     ? "bg-indigo-600 text-white"
                     : "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                 } focus:z-20 focus:outline-offset-0`}
                 onClick={() => {
-                  console.log(page, maxPage)
+                  console.log(page, maxPage);
                   props.setPage([page, maxPage]);
                 }}
               >
@@ -77,14 +86,21 @@ function Pagination(props) {
               </a>
             ))}
             {pages[pages.length - 1] < maxPage && (
-              <span className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+              <span
+                onClick={() => {
+                  props.setPage([maxPage, maxPage]);
+                }}
+                className="relative cursor-pointer inline-flex items-center  px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+              >
                 ...
               </span>
             )}
 
             <a
-              href="#"
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+              onClick={() => {
+                props.setPage([currentPage + 1, maxPage]);
+              }}
+              className="relative cursor-pointer inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Next</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />

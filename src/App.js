@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className="pages max-w-screen-lg mx-auto">
+      <div className="pages max-w-screen-2xl mx-auto">
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/characters" element={<Characters />}>

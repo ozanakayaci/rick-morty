@@ -8,8 +8,6 @@ import {
 
 import { Link } from "react-router-dom";
 
-import axios from "axios";
-
 function Card(props) {
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
@@ -61,6 +59,7 @@ function Card(props) {
               to={`/${dataType}s/${props.item.id}`}
             >
               <img
+              loading="lazy"
                 className="block border border-transparent rounded-lg"
                 src={charData.image}
                 alt=""
