@@ -18,10 +18,13 @@ function Card(props) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    if (favorites.characterIDs.indexOf(props.id) !== -1) {
+    if (favorites.characterIDs.indexOf(props.item.id) !== -1) {
       setIsFavorite(true);
     }
-  }, []);
+    else{
+      setIsFavorite(false);
+    }
+  }, [favorites]);
 
   return (
     <div>
@@ -36,9 +39,8 @@ function Card(props) {
                 } else {
                   dispatch(removeCharacterID(props.item.id));
                 }
-                setIsFavorite(!isFavorite);
               }}
-              className={`absolute top-0 right-0 m-2 w-6 h-6 cursor-pointer ${
+              className={`absolute top-0 right-0 m-2 w-6 h-6 cursor-pointer hover:scale-150 transition-all duration-1000 ${
                 isFavorite ? "fill-yellow-500" : "fill-none"
               }`}
               xmlns="http://www.w3.org/2000/svg"

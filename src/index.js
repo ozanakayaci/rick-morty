@@ -5,6 +5,9 @@ import App from "./App";
 
 import reportWebVitals from "./reportWebVitals";
 
+
+import { Toaster } from "react-hot-toast";
+
 //react-router-dom
 import { BrowserRouter } from "react-router-dom";
 //redux
@@ -16,6 +19,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+      <Toaster />
         <App />
       </BrowserRouter>
     </Provider>

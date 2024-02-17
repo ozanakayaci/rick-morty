@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-hot-toast";
+
 const initialState = {
-  characterIDs: localStorage.getItem("favorites")
-    ? JSON.parse(localStorage.getItem("favorites"))
-    : [],
+  characterIDs: JSON.parse(localStorage.getItem("favorites")) || [],
 };
 
 export const favoritesSlice = createSlice({
@@ -10,18 +10,22 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addCharacterID: (state, action) => {
-      if (state.characterIDs.indexOf(action.payload) === -1) {
-        state.characterIDs.push(action.payload);
-      }
+      if (state.characterIDs.length < 11) {
+        if (state.characterIDs.indexOf(action.payload) === -1) {
+          state.characterIDs = [...state.characterIDs, action.payload];
+        }
 
-      let localFavorites = JSON.parse(localStorage.getItem("favorites"));
-      console.log(localFavorites != null);
-      if (localFavorites) {
-        localFavorites.indexOf(action.payload) === -1 &&
-          localFavorites.push(action.payload);
-        localStorage.setItem("favorites", JSON.stringify(localFavorites));
+        let localFavorites = JSON.parse(localStorage.getItem("favorites"));
+        console.log(localFavorites != null);
+        if (localFavorites) {
+          localFavorites.indexOf(action.payload) === -1 &&
+            localFavorites.push(action.payload);
+          localStorage.setItem("favorites", JSON.stringify(localFavorites));
+        } else {
+          localStorage.setItem("favorites", JSON.stringify([action.payload]));
+        }
       } else {
-        localStorage.setItem("favorites", JSON.stringify([action.payload]));
+        toast.error("You can only have 10 favorites.");
       }
     },
     removeCharacterID: (state, action) => {
