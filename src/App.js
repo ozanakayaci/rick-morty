@@ -1,12 +1,13 @@
 import "./App.scss";
 
-import Home from "./components/Home/Home.js";
+import Home from "./pages/Home/Home.js";
 import Navbar from "./components/Navbar/Navbar.js";
-import Characters from "./components/pages/Characters/Characters.js";
-import Episodes from "./components/pages/Episodes/Episodes.js";
-import Locations from "./components/pages/Locations/Locations.js";
+import Characters from "./pages/Characters/Characters.js";
+import Episodes from "./pages/Episodes/Episodes.js";
+import Locations from "./pages/Locations/Locations.js";
 
 import { Route, Routes } from "react-router-dom";
+import Favotites from "./pages/Favorites/Favotites.js";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           </Route>
           <Route path="/locations" element={<Locations />}>
             <Route path=":locationid" element={<Locations />} />
+          </Route>
+          <Route path="/favorites" element={<Favotites />}>
           </Route>
         </Routes>
       </div>

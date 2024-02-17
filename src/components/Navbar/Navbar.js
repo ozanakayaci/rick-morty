@@ -26,6 +26,9 @@ function Navbar() {
           <Link className="navbar-button" to="/locations">
             Locations
           </Link>
+          <Link className="navbar-button" to="/favorites">
+            Favorites
+          </Link>
         </div>
         <Search />
       </div>
