@@ -59,7 +59,8 @@ function Card(props) {
     <div>
       <div>
         {(props.type == "character" && props.item.id) ||
-        props.type == "favorite" ? (
+        props.type == "favorite" ||
+        props.type == "episodeChar" ? (
           //characterCards ********************************
           <div className="characters relative border-2 border-indigo-50 border-b-4 border-b-purple-600 rounded-lg m-3">
             <svg
@@ -138,7 +139,7 @@ function Card(props) {
               <Link
                 className="mt-2 mx-4  font-mono text-lg hover:italic 
                 font-extrabold text-purple-600"
-                to={`${dataType}s/${props.item.id}`}
+                to={`/episodes/${props.item.id}`}
               >
                 {charData.name}
               </Link>
@@ -162,7 +163,7 @@ function Card(props) {
               <Link
                 className="mt-2 mx-4  font-mono text-lg hover:italic 
                 font-extrabold text-purple-600"
-                to={`${dataType}s/${props.item.id}`}
+                to={`/locations/${props.item.id}`}
               >
                 {charData.name}
               </Link>

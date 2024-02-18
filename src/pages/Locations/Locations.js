@@ -41,10 +41,10 @@ function Locations() {
           type={"location"}
         />
       ) : (
-        //all characters ********************************
+        //single location ********************************
         <div className="characters relative border-2 border-indigo-50 border-b-4 border-b-purple-600 rounded-lg m-3">
           {locationid}
-        </div> //all characters endpoint ********************************
+        </div> //single location endpoint ********************************
       )}
     </div>
   );

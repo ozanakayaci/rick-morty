@@ -13,7 +13,7 @@ function BigCard(props) {
           <Card key={key} item={item} type={props.type} />
         ))}
       </div>
-      {props.type !== "favorite" ? (
+      {props.type !== "favorite" || props.type !== "episodeChar" ? (
         //favorite page does not need pagination
         <Pagination
           page={props.page}

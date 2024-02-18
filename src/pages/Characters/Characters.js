@@ -9,7 +9,7 @@ import Card from "../../components/BigCard/Card/Card.js";
 
 
 function Character(props) {
-  let { charid } = useParams();
+  let { charid } = useParams() ;
 
   const [egg, setEgg] = useState(Math.floor(Math.random() * 3));
 
@@ -29,7 +29,7 @@ function Character(props) {
   }, [pageChar[0], charid, props.filteredWord]);
 
   useEffect(() => {
-    if (charid != undefined) {
+    if (charid != undefined ) {
       handleGetCharacter();
     }
   }, [charid]);
