@@ -7,88 +7,18 @@ import BigCard from "../../components/BigCard/BigCard.js";
 import axios from "axios";
 import Card from "../../components/BigCard/Card/Card.js";
 
-const initialState = {
-  id: 1,
-  name: "Rick Sanchez",
-  status: "Alive",
-  species: "Human",
-  type: "",
-  gender: "Male",
-  origin: {
-    name: "Earth (C-137)",
-    url: "https://rickandmortyapi.com/api/location/1",
-  },
-  location: {
-    name: "Citadel of Ricks",
-    url: "https://rickandmortyapi.com/api/location/3",
-  },
-  image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-  episode: [
-    "https://rickandmortyapi.com/api/episode/1",
-    "https://rickandmortyapi.com/api/episode/2",
-    "https://rickandmortyapi.com/api/episode/3",
-    "https://rickandmortyapi.com/api/episode/4",
-    "https://rickandmortyapi.com/api/episode/5",
-    "https://rickandmortyapi.com/api/episode/6",
-    "https://rickandmortyapi.com/api/episode/7",
-    "https://rickandmortyapi.com/api/episode/8",
-    "https://rickandmortyapi.com/api/episode/9",
-    "https://rickandmortyapi.com/api/episode/10",
-    "https://rickandmortyapi.com/api/episode/11",
-    "https://rickandmortyapi.com/api/episode/12",
-    "https://rickandmortyapi.com/api/episode/13",
-    "https://rickandmortyapi.com/api/episode/14",
-    "https://rickandmortyapi.com/api/episode/15",
-    "https://rickandmortyapi.com/api/episode/16",
-    "https://rickandmortyapi.com/api/episode/17",
-    "https://rickandmortyapi.com/api/episode/18",
-    "https://rickandmortyapi.com/api/episode/19",
-    "https://rickandmortyapi.com/api/episode/20",
-    "https://rickandmortyapi.com/api/episode/21",
-    "https://rickandmortyapi.com/api/episode/22",
-    "https://rickandmortyapi.com/api/episode/23",
-    "https://rickandmortyapi.com/api/episode/24",
-    "https://rickandmortyapi.com/api/episode/25",
-    "https://rickandmortyapi.com/api/episode/26",
-    "https://rickandmortyapi.com/api/episode/27",
-    "https://rickandmortyapi.com/api/episode/28",
-    "https://rickandmortyapi.com/api/episode/29",
-    "https://rickandmortyapi.com/api/episode/30",
-    "https://rickandmortyapi.com/api/episode/31",
-    "https://rickandmortyapi.com/api/episode/32",
-    "https://rickandmortyapi.com/api/episode/33",
-    "https://rickandmortyapi.com/api/episode/34",
-    "https://rickandmortyapi.com/api/episode/35",
-    "https://rickandmortyapi.com/api/episode/36",
-    "https://rickandmortyapi.com/api/episode/37",
-    "https://rickandmortyapi.com/api/episode/38",
-    "https://rickandmortyapi.com/api/episode/39",
-    "https://rickandmortyapi.com/api/episode/40",
-    "https://rickandmortyapi.com/api/episode/41",
-    "https://rickandmortyapi.com/api/episode/42",
-    "https://rickandmortyapi.com/api/episode/43",
-    "https://rickandmortyapi.com/api/episode/44",
-    "https://rickandmortyapi.com/api/episode/45",
-    "https://rickandmortyapi.com/api/episode/46",
-    "https://rickandmortyapi.com/api/episode/47",
-    "https://rickandmortyapi.com/api/episode/48",
-    "https://rickandmortyapi.com/api/episode/49",
-    "https://rickandmortyapi.com/api/episode/50",
-    "https://rickandmortyapi.com/api/episode/51",
-  ],
-  url: "https://rickandmortyapi.com/api/character/1",
-  created: "2017-11-04T18:48:46.250Z",
-};
 
 function Character(props) {
   let { charid } = useParams();
 
-  const [loading, setLoading] = useState(true);
+  const [egg, setEgg] = useState(Math.floor(Math.random() * 3));
+
+  const [loading, setLoading] = useState(false);
 
   //for all characters
   const [characters, setCharacters] = useState([]);
   //for single character
-  const [character, setCharacter] = useState();
+  const [character, setCharacter] = useState({id:0});
   // pagination
   const [pageChar, setPageChar] = useState([1, 0]);
 
@@ -120,13 +50,11 @@ function Character(props) {
           setLoading(false);
         })
         .catch((e) => {
-          console.log("second");
           toast.error(
-            "Can't find the character, Morty. Code harder next time."
+            "Cheers to failed character searches, Morty!"
           );
         });
     } catch (e) {
-      console.log("first");
       toast.error("Nothing found");
     }
   };
@@ -140,20 +68,20 @@ function Character(props) {
         `${process.env.REACT_APP_ENDPOINT}character/${charid}`
       );
       setCharacter(response.data);
-      if(response.data.id){
+      if (response.data.id) {
         setLoading(false);
+        console.log("test")
       }
     } catch (e) {
       console.log(e);
     }
   };
-
   return (
     <div>
       {loading ? (
         //loading
         <div className={`flex justify-center flex-wrap m-3`}>
-          {props.filteredWord && (
+          {props.filteredWord && egg == 0 ? (
             <div className="text-green-500 flex flex-col items-center max-w-lg">
               <img
                 width={200}
@@ -161,21 +89,41 @@ function Character(props) {
                 alt=""
               />
               <div className="mt-5">
-                Morty, did you enter the character's name into the website's
-                search engine? Okay, there's something simple here, Morty. Next
-                time, you gotta be more careful, you know? Make sure you spell
-                the character's name correctly; it's a pretty basic thing,
-                Morty. If it still can't be found, maybe you need to take a bit
-                more of a scientific approach behind the scenes of the site,
-                yeah, science solves everything, Morty. Check the content, check
-                the database, and of course, check the code. Do you understand,
-                Morty? It's a bit more complicated, but you gotta fix this site,
-                otherwise, no one's gonna appreciate your scientific genius.
-                Now, let's go fix this problem, Morty, it's like saving the
-                world or something!
+                Ugh, Morty, seriously? You can't even manage to find a character
+                on a website? It's not rocket science, Morty! Get it together!
+                Maybe put in a little effort next time, huh?
               </div>
             </div>
-          )}...
+          ) : props.filteredWord && egg == 1 ? (
+            <div className="text-green-500 flex flex-col items-center max-w-lg">
+              <img
+                width={200}
+                src="https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+                alt=""
+              />
+              <div className="mt-5">
+                Oh, um, okay. Let me try this, Morty. Uh, hey, I-I tried looking
+                for the character, but, um, couldn't find it. Maybe, you know,
+                we could, uh, double-check the spelling or, uh, look into the,
+                uh, website's settings? I-I don't want to mess things up, you
+                know?
+              </div>
+            </div>
+          ) : (
+            <div className="text-green-500 flex flex-col items-center max-w-lg">
+              <img
+                width={200}
+                src="https://rickandmortyapi.com/api/character/avatar/3.jpeg"
+                alt=""
+              />
+              <div className="mt-5">
+                Oh, great, Morty messed up the website search again. Can't find
+                the character, huh? Typical Morty move. Well, I guess someone
+                has to clean up the mess. Let me fix this, like always.
+              </div>
+            </div>
+          )}
+          ...
         </div>
       ) : charid == undefined ? (
         // multiple characters
@@ -189,7 +137,6 @@ function Character(props) {
         // single character
         <div>
           <div className={`flex justify-center flex-wrap m-3`}>
-            {console.log(character.id, "character.id")}
             <Card item={character} type={"character"} />
           </div>
         </div>

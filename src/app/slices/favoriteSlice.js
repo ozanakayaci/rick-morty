@@ -25,7 +25,7 @@ export const favoritesSlice = createSlice({
           localStorage.setItem("favorites", JSON.stringify([action.payload]));
         }
       } else {
-        toast.error("You can only have 10 favorite character.");
+        toast.error("You can only have 10 favorite character, Morty!");
       }
     },
     removeCharacterID: (state, action) => {
