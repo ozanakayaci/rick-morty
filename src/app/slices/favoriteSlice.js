@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
 const initialState = {
-  characterIDs: JSON.parse(localStorage.getItem("favorites")) || [1,2],
+  characterIDs: JSON.parse(localStorage.getItem("favorites")) || [],
 };
 
 export const favoritesSlice = createSlice({
