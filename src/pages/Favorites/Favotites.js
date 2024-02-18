@@ -11,15 +11,18 @@ function Favotites() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log(favorites);
     //no need to make a request if there are no favorites
-    if (favorites.length === 0) return;
-
+    setLoading(true);
     try {
       axios(`${process.env.REACT_APP_ENDPOINT}character/${favorites.join(",")}`)
         .then(function (response) {
-          if (favorites.length === 1) {
-            setData([response.data]);
-          } else setData(response.data);
+          if (favorites.length > 0) {
+            if (favorites.length === 1) {
+              setData([response.data]);
+            } else setData(response.data);
+            setLoading(false);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -31,7 +34,7 @@ function Favotites() {
 
   return (
     <div>
-      {data.length > 0 ? (
+      {data.length > 0 && !loading ? (
         <BigCard data={data} type={"favorite"}></BigCard>
       ) : (
         <div className="text-center font-bold text-xl">

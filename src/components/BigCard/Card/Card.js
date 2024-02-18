@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -20,24 +21,53 @@ function Card(props) {
   useEffect(() => {
     if (favorites.characterIDs.indexOf(props.item.id) !== -1) {
       setIsFavorite(true);
-    }
-    else{
+    } else {
       setIsFavorite(false);
     }
   }, [favorites]);
 
-  
+  const handleRemoveFavorite = (id) => {
+    toast((t) => (
+      <div className="flex flex-col items-center text-center">
+        <div className=" font-bold">
+          Come on Morty, you really wanna ditch that favorite?
+        </div>
+        <div className="flex justify-between w-full mt-2">
+          <button
+            className="bg-red-400 hover:bg-red-600 text-white font-bold py-1 rounded w-40 max-w-32"
+            onClick={() => {
+              dispatch(removeCharacterID(id));
+              toast.dismiss(t.id);
+            }}
+          >
+            Yeah, I guess.
+          </button>
+          <button
+            className="bg-green-400 hover:bg-green-600 text-white font-bold py-1 rounded w-40 max-w-32"
+            onClick={() => {
+              toast.dismiss(t.id);
+            }}
+          >
+            No, never mind.
+          </button>
+        </div>
+      </div>
+    ));
+  };
 
   return (
     <div>
       <div>
-        {(props.type == "character" && props.item.id) || props.type == "favorite"  ? (
+        {(props.type == "character" && props.item.id) ||
+        props.type == "favorite" ? (
           //characterCards ********************************
           <div className="characters relative border-2 border-indigo-50 border-b-4 border-b-purple-600 rounded-lg m-3">
             <svg
               onClick={() => {
                 if (!isFavorite) {
                   dispatch(addCharacterID(props.item.id));
+                } else if (props.type == "favorite") {
+                  handleRemoveFavorite(props.item.id);
                 } else {
                   dispatch(removeCharacterID(props.item.id));
                 }
@@ -58,12 +88,9 @@ function Card(props) {
               />
             </svg>
 
-            <Link
-              className="inline-block"
-              to={`/characters/${props.item.id}`}
-            >
+            <Link className="inline-block" to={`/characters/${props.item.id}`}>
               <img
-              loading="lazy"
+                loading="lazy"
                 className="block border border-transparent rounded-lg"
                 src={charData.image}
                 alt=""

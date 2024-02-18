@@ -29,6 +29,7 @@ export const favoritesSlice = createSlice({
       }
     },
     removeCharacterID: (state, action) => {
+      console.log("state",action)
       state.characterIDs = state.characterIDs.filter(
         (id) => id !== action.payload
       );
