@@ -31,7 +31,7 @@ function Favotites() {
       console.log(e);
     }
   }, [favorites]);
-
+console.log(data,"data")
   return (
     <div>
       {data.length > 0 && !loading ? (

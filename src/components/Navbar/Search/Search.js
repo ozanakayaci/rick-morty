@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import "./Search.scss";
 
 function Search() {
-  const [filteredWord, setFilteredWord] = useState("");
+  const [filteredWord, setFilteredWord] = useState("rick");
 
   let handleChange = (e) => {
     setFilteredWord(e.target.value);
@@ -17,7 +17,7 @@ function Search() {
   return (
     <div className="search-container">
       <input
-      autoComplete="false"
+        autoComplete="false"
         type="text"
         name="search"
         placeholder="Search..."

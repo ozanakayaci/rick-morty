@@ -83,7 +83,7 @@ function Episodes() {
       console.log(e);
     }
   };
-
+  console.log(charDatas, "data");
   return (
     <div>
       {episodeid == undefined && !loading ? (
@@ -94,12 +94,16 @@ function Episodes() {
           type={"episode"}
         />
       ) : (
-        !loading &&
-        charDatas.length > 0 &&
-        charDatas[0].id && (
+        !loading && (
           //single episode ********************************
           <div className="characters relative border-2 border-indigo-50 border-b-4 border-b-purple-600 rounded-lg m-3">
-            <BigCard data={charDatas} type={"episodeChar"} />
+            <div className="text-center font-bold text-2xl text-green-600">
+              <span>{data.name}</span>
+            </div>
+            <div className="text-center font-bold text-xl">
+              <span>{data.episode}</span>-<span> {data.air_date} </span>
+            </div>
+            <BigCard data={charDatas} type="episodeChar" />
           </div> //single episode endpoint ********************************
         )
       )}
