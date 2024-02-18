@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
 const initialState = {
-  characterIDs: JSON.parse(localStorage.getItem("favorites")) || [],
+  characterIDs: JSON.parse(localStorage.getItem("favorites")) || [1,2],
 };
 
 export const favoritesSlice = createSlice({
@@ -16,7 +16,7 @@ export const favoritesSlice = createSlice({
         }
 
         let localFavorites = JSON.parse(localStorage.getItem("favorites"));
-        console.log(localFavorites != null);
+
         if (localFavorites) {
           localFavorites.indexOf(action.payload) === -1 &&
             localFavorites.push(action.payload);
@@ -25,7 +25,7 @@ export const favoritesSlice = createSlice({
           localStorage.setItem("favorites", JSON.stringify([action.payload]));
         }
       } else {
-        toast.error("You can only have 10 favorites.");
+        toast.error("You can only have 10 favorite character.");
       }
     },
     removeCharacterID: (state, action) => {

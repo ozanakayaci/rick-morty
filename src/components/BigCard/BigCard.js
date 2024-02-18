@@ -4,7 +4,7 @@ import Pagination from "../Pagination/Pagination.js";
 
 function BigCard(props) {
   return (
-    <div id={props.type}>
+    <div>
       <div className="text-center font-bold text-xl">
         <span>{`${props.type[0].toUpperCase() + props.type.slice(1)}s`}</span>
       </div>
@@ -14,6 +14,7 @@ function BigCard(props) {
         ))}
       </div>
       {props.type !== "favorite" ? (
+        //favorite page does not need pagination
         <Pagination
           page={props.page}
           setPage={props.setPage}

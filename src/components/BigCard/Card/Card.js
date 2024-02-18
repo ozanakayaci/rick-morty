@@ -26,10 +26,12 @@ function Card(props) {
     }
   }, [favorites]);
 
+  
+
   return (
     <div>
       <div>
-        {props.type == "character" || props.type == "favorite"  ? (
+        {(props.type == "character" && props.item.id) || props.type == "favorite"  ? (
           //characterCards ********************************
           <div className="characters relative border-2 border-indigo-50 border-b-4 border-b-purple-600 rounded-lg m-3">
             <svg
@@ -41,13 +43,13 @@ function Card(props) {
                 }
               }}
               className={`absolute top-0 right-0 m-2 w-6 h-6 cursor-pointer hover:scale-150 transition-all duration-1000 ${
-                isFavorite ? "fill-yellow-500" : "fill-none"
+                isFavorite ? "fill-green-500" : "fill-none"
               }`}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeWidth={1}
+              strokeWidth={2}
             >
               <path
                 strokeLinecap="round"

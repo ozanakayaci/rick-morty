@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar.js";
 import Characters from "./pages/Characters/Characters.js";
 import Episodes from "./pages/Episodes/Episodes.js";
 import Locations from "./pages/Locations/Locations.js";
+import Search from "./pages/Search/Search.js";
 
 import { Route, Routes } from "react-router-dom";
 import Favotites from "./pages/Favorites/Favotites.js";
@@ -25,8 +26,8 @@ function App() {
           <Route path="/locations" element={<Locations />}>
             <Route path=":locationid" element={<Locations />} />
           </Route>
-          <Route path="/favorites" element={<Favotites />}>
-          </Route>
+          <Route path="/favorites" element={<Favotites />} />
+          <Route path="/search/:filteredWord" element={<Search />} />
         </Routes>
       </div>
     </div>

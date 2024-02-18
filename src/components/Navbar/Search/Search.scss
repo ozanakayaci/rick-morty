@@ -26,6 +26,7 @@ $bg-color: #ffeeee;
   font-weight: 500;
   font-size: 16px;
   transition: 0.8s;
+  line-height: 16px;
 }
 
 .search-container:hover > .search-input,
@@ -41,7 +42,7 @@ $bg-color: #ffeeee;
   animation: hoverShake 0.15s linear 3;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 640px) {
   .search-container {
     display: none;
   }

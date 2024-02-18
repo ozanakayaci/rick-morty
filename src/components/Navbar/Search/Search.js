@@ -17,6 +17,7 @@ function Search() {
   return (
     <div className="search-container">
       <input
+      autoComplete="false"
         type="text"
         name="search"
         placeholder="Search..."
